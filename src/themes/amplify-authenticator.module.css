@@ -1,0 +1,24 @@
+div.amplify-flex.amplify-tabs[data-indicator-position=top]  {
+    padding-bottom:20px
+}
+
+[data-amplify-authenticator] [data-amplify-router]{
+    border-style: none;
+    box-shadow: none;
+    max-width:100%;
+}
+
+[data-amplify-authenticator] [data-amplify-form]{
+    padding: 0px;
+}
+
+[data-amplify-container] {
+    max-width  : 100%;
+}
+
+[data-amplify-authenticator] [data-amplify-container] {
+    max-width:430px;
+    padding: 10px;
+}
+
+

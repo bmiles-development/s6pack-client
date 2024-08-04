@@ -1,0 +1,112 @@
+{
+  "name": "mantis-free-react-admin-template",
+  "version": "1.1.1",
+  "private": true,
+  "homepage": "https://localhost/",
+  "dependencies": {
+    "@ant-design/icons": "^4.8.0",
+    "@apollo/client": "^3.8.7",
+    "@aws-amplify/ui-react": "^4.6.0",
+    "@base2/pretty-print-object": "^1.0.2",
+    "@emotion/cache": "^11.10.8",
+    "@emotion/react": "^11.10.8",
+    "@emotion/styled": "^11.10.8",
+    "@hookform/resolvers": "^3.1.0",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/lab": "^5.0.0-alpha.155",
+    "@mui/material": "^5.14.19",
+    "@reduxjs/toolkit": "^1.9.5",
+    "@stripe/react-stripe-js": "^1.16.5",
+    "@stripe/stripe-js": "^1.52.1",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.1",
+    "apexcharts": "^3.40.0",
+    "aws-amplify": "^5.1.4",
+    "aws-appsync-auth-link": "^3.0.7",
+    "aws-appsync-subscription-link": "^3.1.3",
+    "babel-loader": "^9.1.2",
+    "formik": "^2.2.9",
+    "framer-motion": "^7.10.3",
+    "graphql": "^16.8.1",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.43",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-apexcharts": "^1.4.0",
+    "react-copy-to-clipboard": "^5.1.0",
+    "react-device-detect": "^2.2.3",
+    "react-dom": "^18.2.0",
+    "react-element-to-jsx-string": "algolia/react-element-to-jsx-string#master",
+    "react-google-recaptcha": "^2.1.0",
+    "react-hook-form": "^7.43.9",
+    "react-moment": "^1.1.3",
+    "react-number-format": "^4.9.4",
+    "react-pay-icons": "^3.1.1",
+    "react-redux": "^8.0.5",
+    "react-router": "^6.4.1",
+    "react-router-dom": "^6.11.0",
+    "react-scripts": "^5.0.1",
+    "react-syntax-highlighter": "^15.5.0",
+    "redux": "^4.2.1",
+    "simplebar-react": "^3.2.4",
+    "typescript": "^4.9.5",
+    "web-vitals": "^3.3.2",
+    "yup": "^0.32.11"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.(ts|tsx|js|jsx)$": "ts-jest"
+    }
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react",
+      "@babel/preset-env"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.5",
+    "@babel/eslint-parser": "^7.21.3",
+    "@babel/plugin-syntax-jsx": "^7.23.3",
+    "@babel/preset-env": "^7.23.3",
+    "@babel/preset-react": "^7.23.3",
+    "eslint": "^8.39.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-react-app": "7.0.1",
+    "eslint-import-resolver-typescript": "3.5.1",
+    "eslint-plugin-flowtype": "^8.0.3",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "6.6.1",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "4.6.0"
+  },
+  "overrides": {
+    "react-refresh": "0.11.0"
+  }
+}
