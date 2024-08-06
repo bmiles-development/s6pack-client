@@ -1,5 +1,5 @@
 
-# s6pack Client App
+# s6pack - Client App
 1. Serverless
 2. Scalable
 3. Secure
