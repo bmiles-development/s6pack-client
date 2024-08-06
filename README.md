@@ -1,5 +1,17 @@
+
+# s6pack Client App
+1. Serverless
+2. Scalable
+3. Secure
+4. Software as a
+5. Service
+6. Starter
+* Pack
+
+![s6pack](./public/s6pack.svg)
+
 # Deployment Strategy: https://sharathvignesh.medium.com/ci-cd-deploy-react-app-to-aws-s3-using-github-actions-3f6d77783190
-# select dev vs prod .env files when oushing branches
+# select dev vs prod .env files when pushing branches
 
 #SETUP
   1) Copy .env.template to .env and replace the dummy values with your own (Use s6pack Backend to create these varialbes or use s6pack Backend as reference to create your own necessary services).
