@@ -11,12 +11,19 @@
 
 ![s6pack](./public/s6pack.svg)
 
-# Deployment Strategy: https://sharathvignesh.medium.com/ci-cd-deploy-react-app-to-aws-s3-using-github-actions-3f6d77783190
-# select dev vs prod .env files when pushing branches
+
 
 #SETUP
-  1) Copy .env.template to .env and replace the dummy values with your own (Use s6pack Backend to create these varialbes or use s6pack Backend as reference to create your own necessary services).
-  2) (Optional) For AWS access key and secret, it would be wise to create IAM user/credentials with the following limited permissions (replace ```domain_name``` with your domain name):
+  ** This setup uses a deployment strategy by Sharath Vignesh explained [here](https://sharathvignesh.medium.com/ci-cd-deploy-react-app-to-aws-s3-using-github-actions-3f6d77783190).
+  1) Clone this repository and cd into the project folder.
+  2) create three new branches: 
+  ```
+	git branch -b dev
+	git branch -b green
+	git branch -b blue
+  ``` 
+  4) Copy .env.template to .env and replace the dummy values with your own (Use s6pack Cloud app to create these variables or use s6pack Cloud as reference to create your own necessary services).
+  5) (Optional) For AWS access key and secret, it would be best to create IAM user/credentials with the following limited permissions (replace ```domain_name``` with your domain name):
     ```{
       "Version": "2012-10-17",
       "Statement": [
@@ -52,7 +59,7 @@
 		}
       ]
     }```
-  3) Create Github secrets for the following Workflow variables:
+  6) Create Github secrets for the following Workflow variables:
       
       ENV_FILE_DEV
       ENV_FILE_GREEN
@@ -60,7 +67,7 @@
         
       Eache of these secrets need to contain all of the variables and values found in the .env.template file. Be sure to replace the specific stack's values as needed for each branch. Keep all the vairables safe somewhaere on your local computer because once saved in github you will not be able
 	  to view them again. 
-  4) Add these individual secrets used in the workflow templates:
+  7) Add these individual secrets used in the workflow templates:
 
       AWS_BUCKET_NAME_DEV
       AWS_BUCKET_NAME_GREEN
@@ -69,7 +76,7 @@
       AWS_SECRET_ACCESS_KEY
       AWS_REGION
       
-  5) Push your branch
+  8) Push your branch
 
 
 
