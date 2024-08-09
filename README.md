@@ -18,20 +18,13 @@
   1) Clone this repository and cd into the project folder.
   2) delete the .git folder 
   3) Create a new project in Github (eg: s6pack-example)
-  4) Create three new branches: 
+  4) Create three new branches after creating the main branch: 
   		```
-		git branch -b dev
-		git branch -b green
-		git branch -b blue
+		git checkout -b dev
+		git checkout -b green
+		git checkout -b blue
   		```
-  5) Push the three branches: dev, blue, and green live.
-		```
-		git push -u origin dev
-		git push -u origin blue
-		git push -u origin green
-		```
-		You will likely get github action errors emailed to you. Ignore them for now.
-  6) Copy .env.template to .env and replace the dummy values with your own (Use s6pack Cloud app to create these variables or use s6pack Cloud as reference to create your own necessary services). Populate the commented out live versons as well for copying into git hub secrets for deploying later.
+  5) Copy .env.template to .env and replace the dummy values with your own (Use s6pack Cloud app to create these variables or use s6pack Cloud as reference to create your own necessary services). Populate the commented out live versons as well for copying into git hub secrets for deploying later.
 		```
 		REACT_APP_AWS_REGION = "{your region here eg: us-west-1}"
 		```
@@ -52,10 +45,35 @@
 		REACT_APP_AWS_IDENTITY_POOL_ID = "us-west-1:{dev pool id here}"
 		```
 		For the blue and green env variables, use the dataStackLive_identity_pool.
+		
+		Leave the following as is:
+		```
+		REACT_APP_APPSYNC_AUTHENTICATION_TYPE = "AMAZON_COGNITO_USER_POOLS"
+		```
+		Add your Graphql endpoints (defaulted to dev, blue, and green subdomains). They can be found [here](https://us-west-1.console.aws.amazon.com/appsync/home?region=us-west-1#/apis) and click the ```Custom domain names``` in the left column:
+		```
+		REACT_APP_APPSYNC_CUSTOM_GRAPHQL_ENDPOINT = "https://dev.{your-appsync-site}/graphql"
+		```
+		IAM Region defaulted to us-west-1
+		```
+		REACT_APP_APPSYNC_IAM_REGION = "us-west-1"
+		```
+		For the stripe secret, log into your stripe dashboard API Keys tab [here](https://dashboard.stripe.com/apikeys) and click ```reveal live key``` to get the live secret. paste that into the blue and green live vars. For the dev site, toggle ```Test Mode``` at the top of the page to reveal the test secret key.
+		```
+		REACT_APP_STRIPE_SECRET="pk_test{test stripe secret key here}"
+		```
+		Next, log into you Google ReCAPTCHA account [here](https://www.google.com/recaptcha/admin) and select reCAPTCHA v2 checkbox your domain name. Click the ```Settings``` icon. Under the reCAPTCHA keys section click the ```COPY SITE KEY``` button and paste it into the blue and green section. Leave the dev site key as is since it isd the [test key](https://developers.google.com/recaptcha/docs/faq) for local testing.
+		```
+		REACT_APP_RECAPTCHA_SITE_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+		```
+		Leave the default "dev/live_business_plan" for tyhe last env variable:
+		```
+		REACT_APP_TRIAL_PERIOD_SUBSCRIPTION_ID = "dev_business_plan"
+		```
 
-  7) For AWS access key and secret, create a new IAM user [here](https://us-east-1.console.aws.amazon.com/iam/home?region=us-west-1#/users/create) (eg: a User named ClientAppGithubWorkfows) 
-  8) Select ```Attach policies directly``` 
-  9) On the "Specify Permissions" page, click ```JSON``` and paste the following limited permissions (replace ```domain_name``` with your domain name):
+  6) For AWS access key and secret, create a new IAM user [here](https://us-east-1.console.aws.amazon.com/iam/home?region=us-west-1#/users/create) (eg: a User named ClientAppGithubWorkfows) 
+  7) Select ```Attach policies directly``` 
+  8) On the "Specify Permissions" page, click ```JSON``` and paste the following limited permissions (replace ```domain_name``` with your domain name):
     	```
 		{
 			"Version": "2012-10-17",
@@ -93,22 +111,25 @@
 			]
 		}
 		```
-  10) Create a Policy Name (eg. ClientAppGithubWorkfowsPolicy) and click ```Create Policy```.
-  11) Create Github Secrets for Actions. In your github project for the following Workflow variables:
+  9)  Create a Policy Name (eg. ClientAppGithubWorkfowsPolicy) and click ```Create Policy```.
+  10) Create Github Secrets for Actions. In your github project for the following Workflow variables:
       ```
       ENV_FILE_DEV
       ENV_FILE_GREEN
       ENV_FILE_BLUE
       ```
-      Each of these Github Secrets need to contain all of the variables and values found in the .env file you've just edited. Keep all the vairables safe somewhere on your local computer because once saved in Github Secrets you will not be able to view them again. 
+      Each of these Github Secrets need to contain all of the variables and values found in the .env file you've just edited. Keep all the vairables safe somewhere on your local computer because once saved in Github Secrets you will not be able to view them again. See screenshot for reference: 
+	  ![s6pack](./public/github_secrets_screenshot.png)
+  11) Click your newly created user and select the ```Security Credentials``` tab. Cick the ```Create Access Key``` under the ```Access Keys``` tab. Select ```Other```. For the Decription you can type GithubWorkflows. Click ```Create Access Key```.
   12) Create seperate Github Secrets for each of the variables below. These are used in the Github Workflow templates which can be found in the .github/workflows folder:
-
-      AWS_BUCKET_NAME_DEV
-      AWS_BUCKET_NAME_GREEN
-      AWS_BUCKET_NAME_BLUE
-      AWS_ACCESS_KEY_ID
-      AWS_SECRET_ACCESS_KEY
-      AWS_REGION
+	  ```
+      AWS_BUCKET_NAME_DEV="dev.{your-domain-name}"
+	  AWS_BUCKET_NAME_BLUE="blue.{your-domain-name}"
+      AWS_BUCKET_NAME_GREEN="green.{your-domain-name}"
+      AWS_ACCESS_KEY_ID="{access key from step 11}"
+      AWS_SECRET_ACCESS_KEY="{secret access key from step 11}"
+      AWS_REGION="{default us-west-1}
+	  ```
       
   13) Push the three branches: dev, blue, and green live.
 		```
@@ -116,6 +137,8 @@
 		git push -u origin blue
 		git push -u origin green
 		```
+  14) After a few minutes wating for the github actions (see them running under the github.com ```Actions``` tab) you should be able to navigate to your live website.
+  15) running ```npm start``` will launch the local copy, but it uses the variables stored in the env file, so it is possible to switch between the dev, blue, and green stacks locally by commenting/uncommenting the block of variables (the live dev stack is the default)
 
 
 
