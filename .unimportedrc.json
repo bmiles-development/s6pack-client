@@ -1,0 +1,69 @@
+{
+  "entry": [
+    "src/main.ts",
+    "src/pages/**/*.{js,ts,tsx,jsx}"
+  ],
+  "extensions": [
+    ".ts",
+    ".js",
+    ".jsx",
+    ".tsx"
+  ],
+  "ignorePatterns": [
+    "**/node_modules/**",
+    "private/**"
+  ],
+  "ignoreUnresolved": [
+    "encoding",
+    "src/routes/LoginRoutes.js",
+    "src/routes/MainRoutes.js",
+    "store"
+  ],
+  "ignoreUnimported": [
+    "src/App.js",
+    "src/components/@extended/Breadcrumbs.js",
+    "src/components/@extended/Transitions.js",
+    "src/components/Loadable.js",
+    "src/components/Loader.js",
+    "src/components/RequireAuth.js",
+    "src/components/ScrollTop.js",
+    "src/components/third-party/SimpleBar.js",
+    "src/config.js",
+    "src/index.js",
+    "src/layout/MainLayout/Drawer/DrawerContent/NavCard.js",
+    "src/layout/MainLayout/Drawer/DrawerContent/Navigation/NavGroup.js",
+    "src/layout/MainLayout/Drawer/DrawerContent/Navigation/NavItem.js",
+    "src/layout/MainLayout/Drawer/DrawerContent/Navigation/index.js",
+    "src/layout/MainLayout/Drawer/DrawerContent/index.js",
+    "src/layout/MainLayout/Drawer/DrawerHeader/DrawerHeaderStyled.js",
+    "src/layout/MainLayout/Drawer/DrawerHeader/index.js",
+    "src/layout/MainLayout/Drawer/MiniDrawerStyled.js",
+    "src/layout/MainLayout/Drawer/index.js",
+    "src/layout/MainLayout/Header/AppBarStyled.js",
+    "src/layout/MainLayout/Header/HeaderContent/Notification.js",
+    "src/layout/MainLayout/Header/index.js",
+    "src/layout/MainLayout/index.js",
+    "src/layout/MinimalLayout/index.js",
+    "src/menu-items/admin.js",
+    "src/menu-items/dashboard.js",
+    "src/menu-items/index.js",
+    "src/reportWebVitals.js",
+    "src/routes/LoginRoutes.js",
+    "src/routes/MainRoutes.js",
+    "src/routes/components/AuthNavigate.js",
+    "src/routes/index.js",
+    "src/store/index.js",
+    "src/store/reducers/actions.js",
+    "src/store/reducers/authUser.js",
+    "src/store/reducers/index.js",
+    "src/store/reducers/menu.js",
+    "src/themes/index.js",
+    "src/themes/palette.js",
+    "src/themes/shadows.js",
+    "src/themes/theme/index.js",
+    "src/themes/typography.js"
+  ],
+  "ignoreUnused": [
+    "typescript"
+  ]
+}

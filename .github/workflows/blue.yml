@@ -1,0 +1,53 @@
+#name: Node - SSH deploy
+
+# Controls when the action will run.
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+      branches: [blue]
+  pull_request:
+      branches: [blue]
+jobs:
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    strategy:      
+      matrix:        
+        node-version: [18]
+    steps:      
+      # Use the node version specified in the strategy    
+      - name: Use Node.js ${{ matrix.node-version }}      
+        uses: actions/setup-node@v1      
+        with:        
+          node-version: ${{ matrix.node-version }}
+
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Git checkout
+        uses: actions/checkout@v2
+
+      # Install packages
+      - name: Install packages
+        run: |
+          npm install
+      # see local .env.template file for all variables suppliend in the remove .env file 
+      - name: 'Create env file'
+        run: |
+          echo "${{ secrets.ENV_FILE_BLUE }}" > .env
+      # Build an optimized production build
+      - name: Production build      
+        run: |        
+          unset CI
+          npm run build
+
+      # Deploy to the S3 server
+      - name: Deploy to S3
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_BUCKET_NAME_BLUE }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          SOURCE_DIR: "build"
