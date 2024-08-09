@@ -7,7 +7,7 @@ import { useMediaQuery, Button, Stack } from '@mui/material';
 import Github from '../../../assets/images/icons/github.svg';
 import Twitter from '../../../assets/images/icons/twitter.svg';
 import Discord from '../../../assets/images/icons/discord.svg';
-import { Navigate } from 'react-router';
+import { Navigate, useNavigate } from 'react-router';
 
 // ==============================|| FIREBASE - SOCIAL BUTTON ||============================== //
 
