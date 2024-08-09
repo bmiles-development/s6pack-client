@@ -13,7 +13,7 @@
 
 
 
-#SETUP
+# SETUP
   ** This setup uses the s6pack-cloud app that must be installed prior to the client setup. Follow the s6pack-cloud instructions [here](https://github.com/bmiles-development/s6pack-cloud). 
   
   **This setup uses a deployment strategy by Sharath Vignesh explained [here](https://sharathvignesh.medium.com/ci-cd-deploy-react-app-to-aws-s3-using-github-actions-3f6d77783190).
