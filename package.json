@@ -1,6 +1,6 @@
 {
   "name": "s6pack-client",
-  "version": "1.1.1",
+  "version": "1.0.0",
   "private": true,
   "homepage": "https://localhost/",
   "dependencies": {
