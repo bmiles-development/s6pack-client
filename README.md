@@ -14,16 +14,16 @@
 
 
 #SETUP
-  ** This setup uses a deployment strategy by Sharath Vignesh explained [here](https://sharathvignesh.medium.com/ci-cd-deploy-react-app-to-aws-s3-using-github-actions-3f6d77783190).
+  ** This setup uses the s6pack-cloud app that must be installed prior to the client setup. Follow the s6pack-cloud instructions [here](https://github.com/bmiles-development/s6pack-cloud). 
+  
+  **This setup uses a deployment strategy by Sharath Vignesh explained [here](https://sharathvignesh.medium.com/ci-cd-deploy-react-app-to-aws-s3-using-github-actions-3f6d77783190).
   1) Clone this repository and cd into the project folder.
-  2) delete the .git folder 
-  3) Create a new project in Github (eg: s6pack-example)
-  4) Create three new branches after creating the main branch: 
+  2) run 
   		```
-		git checkout -b dev
-		git checkout -b green
-		git checkout -b blue
-  		```
+		npm install
+		```
+  3) Delete the .git folder 
+  4) Create a new project in Github (eg: s6pack-example)
   5) Copy .env.template to .env and replace the dummy values with your own (Use s6pack Cloud app to create these variables or use s6pack Cloud as reference to create your own necessary services). Populate the commented out live versons as well for copying into git hub secrets for deploying later.
 		```
 		REACT_APP_AWS_REGION = "{your region here eg: us-west-1}"
@@ -73,7 +73,7 @@
 
   6) For AWS access key and secret, create a new IAM user [here](https://us-east-1.console.aws.amazon.com/iam/home?region=us-west-1#/users/create) (eg: a User named ClientAppGithubWorkfows) 
   7) Select ```Attach policies directly``` 
-  8) On the "Specify Permissions" page, click ```JSON``` and paste the following limited permissions (replace ```domain_name``` with your domain name):
+  8)  On the "Specify Permissions" page, click ```JSON``` and paste the following limited permissions (replace ```domain_name``` with your domain name):
     	```
 		{
 			"Version": "2012-10-17",
@@ -131,16 +131,27 @@
       AWS_REGION="{default us-west-1}
 	  ```
       
-  13) Push the three branches: dev, blue, and green live.
+  13) Run:
+		``` 
+		npm build 
+		```
+  14) Create three new branches after creating the main branch: 
+  		```
+		git checkout -b dev
+		git checkout -b green
+		git checkout -b blue
+  		```
+  15) Push the three branches: dev, blue, and green live.
 		```
 		git push -u origin dev
 		git push -u origin blue
 		git push -u origin green
 		```
-  14) After a few minutes wating for the github actions (see them running under the github.com ```Actions``` tab) you should be able to navigate to your live website.
-  15) running ```npm start``` will launch the local copy, but it uses the variables stored in the env file, so it is possible to switch between the dev, blue, and green stacks locally by commenting/uncommenting the block of variables (the live dev stack is the default)
+  16) After a few minutes wating for the github actions (see them running under the github.com ```Actions``` tab) you should be able to navigate to your live website.
+  17) running ```npm start``` will launch the local copy, but it uses the variables stored in the env file, so it is possible to switch between the dev, blue, and green stacks locally by commenting/uncommenting the block of variables (the live dev stack is the default)
 
 
+Special thanks to Codetheme's [Mantis](https://github.com/codedthemes/mantis-free-react-admin-template) for the slick dashboard template.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Price](https://img.shields.io/badge/price-FREE-0098f7.svg)](https://github.com/bmiles-development/s6pack-client/blob/main/LICENSE)
