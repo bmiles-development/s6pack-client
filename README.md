@@ -14,17 +14,17 @@
 
 
 # SETUP
-  ** This setup uses the s6pack-cloud app that must be installed prior to the client setup. Follow the s6pack-cloud instructions [here](https://github.com/bmiles-development/s6pack-cloud). 
   
   **This setup uses a deployment strategy by Sharath Vignesh explained [here](https://sharathvignesh.medium.com/ci-cd-deploy-react-app-to-aws-s3-using-github-actions-3f6d77783190).
-  1) Clone this repository and cd into the project folder.
-  2) run 
+  1) This setup uses the s6pack-cloud app that must be installed prior to the client setup. Follow the s6pack-cloud instructions [here](https://github.com/bmiles-development/s6pack-cloud). 
+  2) Clone this repository and cd into the project folder.
+  3) run 
   		```
 		npm install
 		```
-  3) Delete the .git folder 
-  4) Create a new project in Github (eg: s6pack-example)
-  5) Copy .env.template to .env and replace the dummy values with your own (Use s6pack Cloud app to create these variables or use s6pack Cloud as reference to create your own necessary services). Populate the commented out live versons as well for copying into git hub secrets for deploying later.
+  4) Delete the .git folder 
+  5) Create a new project in Github (eg: s6pack-example)
+  6) Copy .env.template to .env and replace the dummy values with your own (Use s6pack Cloud app to create these variables or use s6pack Cloud as reference to create your own necessary services). Populate the commented out live versons as well for copying into git hub secrets for deploying later.
 		```
 		REACT_APP_AWS_REGION = "{your region here eg: us-west-1}"
 		```
@@ -71,9 +71,9 @@
 		REACT_APP_TRIAL_PERIOD_SUBSCRIPTION_ID = "dev_business_plan"
 		```
 
-  6) For AWS access key and secret, create a new IAM user [here](https://us-east-1.console.aws.amazon.com/iam/home?region=us-west-1#/users/create) (eg: a User named ClientAppGithubWorkfows) 
-  7) Select ```Attach policies directly``` 
-  8)  On the "Specify Permissions" page, click ```JSON``` and paste the following limited permissions (replace ```domain_name``` with your domain name):
+  7) For AWS access key and secret, create a new IAM user [here](https://us-east-1.console.aws.amazon.com/iam/home?region=us-west-1#/users/create) (eg: a User named ClientAppGithubWorkfows) 
+  8) Select ```Attach policies directly``` 
+  9)  On the "Specify Permissions" page, click ```JSON``` and paste the following limited permissions (replace ```domain_name``` with your domain name):
     	```
 		{
 			"Version": "2012-10-17",
@@ -111,8 +111,8 @@
 			]
 		}
 		```
-  9)  Create a Policy Name (eg. ClientAppGithubWorkfowsPolicy) and click ```Create Policy```.
-  10) Create Github Secrets for Actions. In your github project for the following Workflow variables:
+  10) Create a Policy Name (eg. ClientAppGithubWorkfowsPolicy) and click ```Create Policy```.
+  11) Create Github Secrets for Actions. In your github project for the following Workflow variables:
       ```
       ENV_FILE_DEV
       ENV_FILE_GREEN
@@ -120,8 +120,8 @@
       ```
       Each of these Github Secrets need to contain all of the variables and values found in the .env file you've just edited. Keep all the vairables safe somewhere on your local computer because once saved in Github Secrets you will not be able to view them again. See screenshot for reference: 
 	  ![s6pack](./public/github_secrets_screenshot.png)
-  11) Click your newly created user and select the ```Security Credentials``` tab. Cick the ```Create Access Key``` under the ```Access Keys``` tab. Select ```Other```. For the Decription you can type GithubWorkflows. Click ```Create Access Key```.
-  12) Create seperate Github Secrets for each of the variables below. These are used in the Github Workflow templates which can be found in the .github/workflows folder:
+  12) Click your newly created user and select the ```Security Credentials``` tab. Cick the ```Create Access Key``` under the ```Access Keys``` tab. Select ```Other```. For the Decription you can type GithubWorkflows. Click ```Create Access Key```.
+  13) Create seperate Github Secrets for each of the variables below. These are used in the Github Workflow templates which can be found in the .github/workflows folder:
 	  ```
       AWS_BUCKET_NAME_DEV="dev.{your-domain-name}"
 	  AWS_BUCKET_NAME_BLUE="blue.{your-domain-name}"
@@ -131,24 +131,24 @@
       AWS_REGION="{default us-west-1}
 	  ```
       
-  13) Run:
+  14) Run:
 		``` 
 		npm build 
 		```
-  14) Create three new branches after creating the main branch: 
+  15) Create three new branches after creating the main branch: 
   		```
 		git checkout -b dev
 		git checkout -b green
 		git checkout -b blue
   		```
-  15) Push the three branches: dev, blue, and green live.
+  16) Push the three branches: dev, blue, and green live.
 		```
 		git push -u origin dev
 		git push -u origin blue
 		git push -u origin green
 		```
-  16) After a few minutes wating for the github actions (see them running under the github.com ```Actions``` tab) you should be able to navigate to your live website.
-  17) running ```npm start``` will launch the local copy, but it uses the variables stored in the env file, so it is possible to switch between the dev, blue, and green stacks locally by commenting/uncommenting the block of variables (the live dev stack is the default)
+  17) After a few minutes wating for the github actions (see them running under the github.com ```Actions``` tab) you should be able to navigate to your live website.
+  18) running ```npm start``` will launch the local copy, but it uses the variables stored in the env file, so it is possible to switch between the dev, blue, and green stacks locally by commenting/uncommenting the block of variables (the live dev stack is the default)
 
 
 Special thanks to Codetheme's [Mantis](https://github.com/codedthemes/mantis-free-react-admin-template) for the slick dashboard template.
