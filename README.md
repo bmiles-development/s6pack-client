@@ -24,7 +24,7 @@
 		```
   4) Delete the .git folder 
   5) Create a new project in Github (eg: s6pack-example)
-  6) Copy .env.template to .env and replace the dummy values with your own (Use s6pack Cloud app to create these variables or use s6pack Cloud as reference to create your own necessary services). Populate the commented out live versons as well for copying into git hub secrets for deploying later.
+  6) Copy .env.template to .env and replace the dummy values with your own (Use s6pack Cloud app to create these variables or use s6pack Cloud as reference to create your own necessary services). Populate the commented live verson variables as well- they will be used later for copying into git hub secrets for deployment.
 		```
 		REACT_APP_AWS_REGION = "{your region here eg: us-west-1}"
 		```
