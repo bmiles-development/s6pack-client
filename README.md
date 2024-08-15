@@ -112,15 +112,15 @@
 		}
 		```
   10) Create a Policy Name (eg. ClientAppGithubWorkfowsPolicy) and click ```Create Policy```.
-  11) Create Github Secrets for Actions. In your github project for the following Workflow variables:
+  11) Click your newly created user and select the ```Security Credentials``` tab. Cick the ```Create Access Key``` under the ```Access Keys``` tab. Select ```Other```. For the Decription you can type GithubWorkflows. Click ```Create Access Key```.
+  12)Create Github Secrets for Actions. In your github project for the following Workflow variables:
       ```
       ENV_FILE_DEV
       ENV_FILE_GREEN
       ENV_FILE_BLUE
       ```
       Each of these Github Secrets need to contain all of the variables and values found in the .env file you've just edited. Keep all the vairables safe somewhere on your local computer because once saved in Github Secrets you will not be able to view them again. See screenshot for reference: 
-	  ![s6pack](./public/github_secrets_screenshot.png)
-  12) Click your newly created user and select the ```Security Credentials``` tab. Cick the ```Create Access Key``` under the ```Access Keys``` tab. Select ```Other```. For the Decription you can type GithubWorkflows. Click ```Create Access Key```.
+	  ![s6pack](./public/github_secrets_screenshot.png) 
   13) Create seperate Github Secrets for each of the variables below. These are used in the Github Workflow templates which can be found in the .github/workflows folder:
 	  ```
       AWS_BUCKET_NAME_DEV="dev.{your-domain-name}"
