@@ -60,7 +60,7 @@
 		```
 		For the stripe secret, log into your stripe dashboard API Keys tab [here](https://dashboard.stripe.com/apikeys) and click ```reveal live key``` to get the live secret. paste that into the blue and green live vars. For the dev site, toggle ```Test Mode``` at the top of the page to reveal the test secret key.
 		```
-		REACT_APP_STRIPE_SECRET="pk_test{test stripe secret key here}"
+		REACT_APP_STRIPE_PUBLISHABLE_KEY="pk_test{test stripe secret key here}"
 		```
 		Next, log into you Google ReCAPTCHA account [here](https://www.google.com/recaptcha/admin) and select reCAPTCHA v2 checkbox your domain name. Click the ```Settings``` icon. Under the reCAPTCHA keys section click the ```COPY SITE KEY``` button and paste it into the blue and green section. Leave the dev site key as is since it isd the [test key](https://developers.google.com/recaptcha/docs/faq) for local testing.
 		```

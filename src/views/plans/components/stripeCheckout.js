@@ -4,7 +4,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from './checkoutForm';
 import SkeletonItem from '../../../views/layout/skeletons/Item';
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_SECRET);
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
 function StripeCheckout(props) {
     const [options, setOptions] = useState(null);
