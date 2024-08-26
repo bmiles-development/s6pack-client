@@ -21,7 +21,6 @@ const validationSchema = Yup.object().shape({
 
 function ContactForm(props) {
     const { subject, body } = props;
-    console.log(subject);
     let navigate = useNavigate();
     const { user } = useAuthenticator((context) => [context.user]);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -73,10 +72,6 @@ function ContactForm(props) {
             return false;
         }
     };
-
-    if (!user) {
-        return ''; //user logged out
-    }
 
     let form = (
         <Container maxWidth="md" component="main">

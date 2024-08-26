@@ -9,6 +9,7 @@ import AppAppBar from './sections/AppAppBar';
 import Snackbar from '../../views/landing/components/Snackbar';
 import { useState, useEffect } from 'react';
 import { clearSnackBarMessage } from '../../store/reducers/snackBarMessages';
+import ProductSmokingHero from './sections/ProductSmokingHero';
 
 function Front() {
     const [snackBarOpen, setSnackBarOpen] = useState(false);
@@ -33,6 +34,7 @@ function Front() {
             <ProductHero />
             <ProductValues />
             <ProductFeatures />
+            <ProductSmokingHero />
             <AppFooter />
             <Snackbar open={snackBarOpen} closeFunc={handleSnackBarClose} message={snackBarMessage} />
         </React.Fragment>
