@@ -39,7 +39,23 @@ const Users = () => {
         const { loading: loading2, error: error2, data: tenantPlanData } = useQuery(gql(GET_CURRENT_AND_ALL_PLANS));
 
         if (loading || loading2) return <SkeletonPlan />;
-        if (error) return `Error! ${error.message}`;
+
+        if (error) {
+            if (error.graphQLErrors[0].errorType == 'Unauthorized') {
+                return (
+                    <Alert severity="warning" variant="outlined" sx={{ justifyContent: 'center', alignContent: 'center', m: 5 }}>
+                        You must increase your plan to access this feature. Increase Users by{' '}
+                        <Link to={'/plans'}>upgrading your plan here.</Link>{' '}
+                    </Alert>
+                );
+            }
+            return (
+                <Alert severity="error" variant="filled">
+                    {error.message}
+                </Alert>
+            );
+        }
+
         if (error2) return `Error! ${error2.message}`;
 
         console.log(data);
