@@ -22,8 +22,6 @@ export default function UserUpdate() {
     const [maxedUsers, setMaxedUsers] = useState(false);
     const maxPlanUsers = store.getState().plan.maxPlanUsers.payload;
     const totalActiveUsers = store.getState().plan.totalActiveUsers.payload;
-    console.log(totalActiveUsers);
-    console.log(maxPlanUsers);
 
     function navigateAndSnackbarUserStatus(user) {
         store.dispatch(addSnackBarMessage('User ' + user.email + ' updated successfully.'));
