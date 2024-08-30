@@ -58,7 +58,6 @@ const Users = () => {
 
         if (error2) return `Error! ${error2.message}`;
 
-        console.log(data);
         store.dispatch(setTotalActiveUsers(data.listUsers.filter((x) => x.enabled === true).length));
         store.dispatch(setMaxPlanUsers(Number(tenantPlanData.getTenant.plan.totalUsers)));
         return (
