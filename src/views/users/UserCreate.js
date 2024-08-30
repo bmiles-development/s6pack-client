@@ -127,9 +127,13 @@ const UserCreate = () => {
                         </Grid>
                         <Grid item xs={12}>
                             <InputLabel>Group</InputLabel>
-                            <Select fullWidth id="group" defaultValue={'User'} onChange={handleGroup}>
-                                <MenuItem value={'User'}>Standard User</MenuItem>
-                                <MenuItem value={'Admin'}>Admin</MenuItem>
+                            <Select fullWidth id="group" value={formGroup} defaultValue={'User'} onChange={handleGroup}>
+                                <MenuItem key={'User'} value={'User'}>
+                                    Standard User
+                                </MenuItem>
+                                <MenuItem key={'Admin'} value={'Admin'}>
+                                    Admin
+                                </MenuItem>
                             </Select>
                         </Grid>
                         <Grid item xs={12}>
