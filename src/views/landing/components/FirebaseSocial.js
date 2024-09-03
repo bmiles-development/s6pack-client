@@ -21,7 +21,7 @@ const FirebaseSocial = () => {
     };
 
     const twitterHandler = async () => {
-        return navigate('https://x.com/s6pack_build');// login || singup
+        return navigate('https://x.com/s6pack_build'); // login || singup
     };
 
     const discordHandler = async () => {
