@@ -7,7 +7,7 @@ import { useMediaQuery, Button, Stack } from '@mui/material';
 import Github from '../../../assets/images/icons/github.svg';
 import Twitter from '../../../assets/images/icons/twitter.svg';
 import Discord from '../../../assets/images/icons/discord.svg';
-import { Navigate } from 'react-router';
+import { useNavigate } from 'react-router';
 
 // ==============================|| FIREBASE - SOCIAL BUTTON ||============================== //
 
@@ -17,11 +17,11 @@ const FirebaseSocial = () => {
     const matchDownSM = useMediaQuery(theme.breakpoints.down('sm'));
 
     const githubHandler = async () => {
-        // login || singup
+        return navigate('https://github.com/bmiles-development/s6pack-client');
     };
 
     const twitterHandler = async () => {
-        // login || singup
+        return navigate('https://x.com/s6pack_build');// login || singup
     };
 
     const discordHandler = async () => {

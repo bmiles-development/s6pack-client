@@ -33,7 +33,7 @@ const AmplifyAuthenticator = (props) => {
                     }
                 },
                 authenticator: {
-                    maxWdth: { value: '10px' }
+                    maxWdth: { value: '400px' }
                 }
             }
         }
@@ -70,16 +70,16 @@ const AmplifyAuthenticator = (props) => {
     return (
         <ThemeProvider theme={amplifyTheme}>
             <Grid>
-                <Grid>
-                    <Authenticator height={300} width={400} formFields={formFields} initialState={flowType}></Authenticator>
-                </Grid>
+                <Authenticator height={props.height} width={props.width} formFields={formFields} initialState={flowType}></Authenticator>
             </Grid>
         </ThemeProvider>
     );
 };
 
 AmplifyAuthenticator.propTypes = {
-    flowType: PropTypes.string.isRequired
+    flowType: PropTypes.string.isRequired,
+    width: PropTypes.number,
+    height: PropTypes.number
 };
 
 export default AmplifyAuthenticator;

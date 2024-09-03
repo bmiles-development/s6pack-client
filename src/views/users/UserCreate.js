@@ -42,23 +42,6 @@ const UserCreate = () => {
 
     function CreateUserForm() {
         const [addStandardUser, { loading: buttonLoading, error: error1 }] = useMutation(gql(ADD_STANDARD_USER), {
-            update(cache, { data: { addStandardUser } }) {
-                cache.modify({
-                    fields: {
-                        listUsers(existingUsers = []) {
-                            const newUserRef = cache.writeFragment({
-                                data: addStandardUser,
-                                fragment: gql`
-                                    fragment NewUser on User {
-                                        id
-                                    }
-                                `
-                            });
-                            return [...existingUsers, newUserRef];
-                        }
-                    }
-                });
-            },
             onCompleted(data) {
                 addUserCompleted(data.addStandardUser.email);
             },
@@ -70,23 +53,6 @@ const UserCreate = () => {
         });
 
         const [addAdminUser, { loading: buttonLoading2, error: error2 }] = useMutation(gql(ADD_ADMIN_USER), {
-            update(cache, { data: { addAdminUser } }) {
-                cache.modify({
-                    fields: {
-                        listUsers(existingUsers = []) {
-                            const newUserRef = cache.writeFragment({
-                                data: addAdminUser,
-                                fragment: gql`
-                                    fragment NewUser on User {
-                                        id
-                                    }
-                                `
-                            });
-                            return [...existingUsers, newUserRef];
-                        }
-                    }
-                });
-            },
             onCompleted(data) {
                 addUserCompleted(data.addAdminUser.email);
                 navigate('/users/');
@@ -127,9 +93,13 @@ const UserCreate = () => {
                         </Grid>
                         <Grid item xs={12}>
                             <InputLabel>Group</InputLabel>
-                            <Select fullWidth id="group" defaultValue={'User'} onChange={handleGroup}>
-                                <MenuItem value={'User'}>Standard User</MenuItem>
-                                <MenuItem value={'Admin'}>Admin</MenuItem>
+                            <Select fullWidth id="group" value={formGroup} defaultValue={'User'} onChange={handleGroup}>
+                                <MenuItem key={'User'} value={'User'}>
+                                    Standard User
+                                </MenuItem>
+                                <MenuItem key={'Admin'} value={'Admin'}>
+                                    Admin
+                                </MenuItem>
                             </Select>
                         </Grid>
                         <Grid item xs={12}>
