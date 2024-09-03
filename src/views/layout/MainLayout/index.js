@@ -150,12 +150,7 @@ const MainLayout = () => {
         try {
             const cognitoUser = await Auth.currentAuthenticatedUser();
             const currentSession = await Auth.currentSession();
-            //console.log('running');
-            cognitoUser.refreshSession(currentSession.refreshToken, () => {
-                //console.log('session', err, session);
-                //const { idToken, refreshToken, accessToken } = session;
-                // do whatever you want to do now :)
-            });
+            cognitoUser.refreshSession(currentSession.refreshToken, () => {});
         } catch (e) {
             console.log('Unable to refresh Token', e);
         }
@@ -187,35 +182,6 @@ const MainLayout = () => {
         }
     });
 
-    /*
-    useSubscription(gql(USER_ADDED), {
-        variables: { tenantId: tenantId },
-        onComplete: (data) => {
-            console.log('okokokok ' + data);
-        },
-        onData: (results) => {
-            console.log(results.data);
-            client.writeQuery({
-                query: gql`
-                    query addUser($id: Int!) {
-                        addUser(id: $id) {
-                            id
-                            email
-                            enabled
-                            group
-                            created
-                            modified
-                        }
-                    }
-                `,
-                data: results.data.data.userAdded,
-                variables: {
-                    id: results.data.data.userAdded.id
-                }
-            });
-        }
-    });
-*/
     return (
         <Box sx={{ display: 'flex', width: '100%' }}>
             <Header open={open} handleDrawerToggle={handleDrawerToggle} />

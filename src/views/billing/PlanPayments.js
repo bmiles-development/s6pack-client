@@ -36,19 +36,15 @@ function PlanPayments() {
 
             try {
                 if (payments.length > 0 && newPage < currentPage) {
-                    console.log(prevPageId);
                     params = { endingBefore: nextPageId };
                 }
 
                 if (payments.length > 0 && newPage > currentPage) {
-                    console.log(nextPageId);
                     params = { startingAfter: prevPageId };
                 }
 
-                console.log(params);
                 const res = await API.graphql({ query: LIST_CHARGES, variables: { input: params, limit: itemsPerPage } });
                 setPayments(res.data.listCharges);
-                //console.log(res.data.listCharges);
 
                 if (res.data.listCharges.length > 0) {
                     // change this to use if "more" = true then setNextPageId

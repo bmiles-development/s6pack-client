@@ -21,8 +21,6 @@ function Front() {
     };
 
     useEffect(() => {
-        console.log('here:');
-        console.log(snackBarMessage);
         if (snackBarMessage !== '') {
             setSnackBarOpen(true);
         }

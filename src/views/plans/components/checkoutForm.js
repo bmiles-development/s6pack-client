@@ -85,7 +85,7 @@ const CheckoutForm = (props) => {
         const { error, paymentMethod: newPaymentMethod } = await stripe.createPaymentMethod({
             elements
         });
-        console.log(newPaymentMethod);
+        newPaymentMethod;
         if (error) {
             console.log(error);
             console.log(error.message);

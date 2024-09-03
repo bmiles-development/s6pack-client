@@ -120,7 +120,6 @@ export default function UserUpdate() {
                     listUsers(existingUsers = []) {
                         const returnUsers = [];
                         for (let i = 0; i < existingUsers.length; i++) {
-                            console.log(typeof existingUsers[i]);
                             if (typeof existingUsers[i] != 'undefined') {
                                 if (existingUsers[i]['__ref'] !== delRef) {
                                     returnUsers[i] = existingUsers[i];
