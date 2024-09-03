@@ -56,7 +56,7 @@ const AuthWrapper = ({ children }) => {
                                 border={false}
                                 boxShadow
                             >
-                                <Box sx={{ p: { xs: 2, sm: 3, md: 4, xl: 5 } }} width={500} height={400}>
+                                <Box sx={{ p: { xs: 2, sm: 3, md: 4, xl: 5 } }} width={500} height={450}>
                                     {children}
                                 </Box>
                             </MainCard>
