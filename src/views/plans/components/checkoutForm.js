@@ -48,7 +48,7 @@ const CheckoutForm = (props) => {
 
     const [confirmAddPlan, { loading: paymentMethodLoading2, error2 }] = useMutation(gql(CONFIRM_ADD_PLAN), {
         onError: (error) => {
-            console.log(error);
+            console.log(error.message);
         }
     });
 
@@ -85,9 +85,10 @@ const CheckoutForm = (props) => {
         const { error, paymentMethod: newPaymentMethod } = await stripe.createPaymentMethod({
             elements
         });
-
+        newPaymentMethod;
         if (error) {
             console.log(error);
+            console.log(error.message);
         }
         if (props.paymentMethodOnly) {
             await addPaymentMethod({ variables: { paymentMethodId: newPaymentMethod.id, setupIntentClientSecret: clientSecret } });

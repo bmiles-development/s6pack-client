@@ -19,7 +19,6 @@ const ProfileTab = () => {
     const { signOut } = useAuthenticator((context) => [context.route, context.signOut]);
     const navigate = useNavigate();
     function logout() {
-        console.log('logged out');
         client.clearStore();
         signOut();
         navigate('/login');

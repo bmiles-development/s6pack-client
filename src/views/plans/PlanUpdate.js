@@ -80,9 +80,6 @@ const PlanUpdate = () => {
     } = useQuery(gql(CHECKOUT), {
         fetchPolicy: 'no-cache',
         variables: { id }
-        //onCompleted(data) {
-        //console.log(data);
-        // }
     });
 
     const [changePlan, { loading: changePlanLoading, error }] = useMutation(gql(CHANGE_PLAN), {
