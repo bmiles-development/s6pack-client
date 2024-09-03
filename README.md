@@ -151,6 +151,31 @@
   18) running ```npm start``` will launch the local copy, but it uses the variables stored in the env file, so it is possible to switch between the dev, blue, and green stacks locally by commenting/uncommenting the block of variables (the live dev stack is the default)
 
 
+# DELVELOPER SETUP
+If you would like to contribute to s6pack by submitting pull requests, We've found it better to have a separate branch track a remote upstream git repo to push and pull changes from the s6pack repository, then the dev/blue/green branches push to your remote testing/live repos. 
+
+I've used the method outlined [here](https://dev.to/hashcode01/add-a-second-remote-origin-to-git-35a7). 
+
+1) setup a second remote repo (i will name the remote upstream):
+	
+	```git remote add upstream git@github.com:bmiles-development/s6pack-client.git```
+
+2) set main branch top track upstream main branch: 
+	
+	```git branch main --set-upstream-to upstream/main```
+
+Now you can merge changes from your ```dev``` branch ino the ```main``` branch then submit a pull request. You can also pull updates from the ```upstream main``` with: ```git pull upstream main``` and then merge them into your ```dev``` branch.
+
+If you get an error after running ```git pull upstream main``` like this:
+
+```fatal: refusing to merge unrelated histories```
+
+then you can override this error by adding the following flag: 
+
+```git pull upstream main --allow-unrelated-histories```.
+
+##
+
 Special thanks to Codetheme's [Mantis](https://github.com/codedthemes/mantis-free-react-admin-template) for the slick dashboard template.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
