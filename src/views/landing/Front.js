@@ -31,7 +31,9 @@ function Front() {
         <React.Fragment>
             <AppAppBar />
             <ProductHero />
-            <DemoVideo />
+            <div style={{ backgroundColor: '#efefef' }}>
+                <DemoVideo />
+            </div>
             <ProductValues />
             <ProductFeatures />
             <ProductSmokingHero />

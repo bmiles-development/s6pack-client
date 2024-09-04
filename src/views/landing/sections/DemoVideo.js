@@ -4,15 +4,15 @@ import { styled } from '@mui/material/styles';
 import ReactPlayer from 'react-player';
 
 const DemoVideoLayout = styled('section')(({ theme }) => ({
-    color: theme.palette.secondary.light,
     position: 'relative',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     padding: '5px',
     [theme.breakpoints.up('lg')]: {
-        height: '800px',
-        top: '-60px'
+        height: '720px',
+        top: '-90px',
+        padding: '0px'
     }
 }));
 
