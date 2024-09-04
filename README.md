@@ -160,7 +160,11 @@ I've used the method outlined [here](https://dev.to/hashcode01/add-a-second-remo
 	
 	```git remote add upstream git@github.com:bmiles-development/s6pack-client.git```
 
-2) set main branch top track upstream main branch: 
+2) run:
+	
+	```git fetch upstream```
+
+3) set main branch top track upstream main branch: 
 	
 	```git branch main --set-upstream-to upstream/main```
 

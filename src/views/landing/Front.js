@@ -7,6 +7,7 @@ import ProductHero from './sections/ProductHero';
 import ProductValues from './sections/ProductValues';
 import AppAppBar from './sections/AppAppBar';
 import Snackbar from '../../views/landing/components/Snackbar';
+import DemoVideo from './sections/DemoVideo';
 import { useState, useEffect } from 'react';
 import { clearSnackBarMessage } from '../../store/reducers/snackBarMessages';
 import ProductSmokingHero from './sections/ProductSmokingHero';
@@ -30,6 +31,7 @@ function Front() {
         <React.Fragment>
             <AppAppBar />
             <ProductHero />
+            <DemoVideo />
             <ProductValues />
             <ProductFeatures />
             <ProductSmokingHero />

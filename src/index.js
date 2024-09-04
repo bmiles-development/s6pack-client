@@ -45,7 +45,7 @@ Amplify.configure({
         graphql_headers: async () => {
             try {
                 const session = await Auth.currentSession();
-                //console.log('got a tokenx');
+                console.log('got a tokenx');
                 return {
                     Authorization: session.getIdToken().getJwtToken()
                 };
@@ -53,6 +53,7 @@ Amplify.configure({
                 //if no session then use unauthenticated IAM role for limited graphql access
                 try {
                     await Auth.currentCredentials();
+                    console.log(Auth.getIdToken);
                     //console.log('okokoko');
                     //return { Authorization: creds.sessionToken };
                 } catch (e) {
@@ -63,6 +64,9 @@ Amplify.configure({
         }
     }
 });
+
+let res = await Auth.currentCredentials();
+console.log(res);
 
 //Apollo
 const url = process.env.REACT_APP_APPSYNC_CUSTOM_GRAPHQL_ENDPOINT;
