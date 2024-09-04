@@ -2,7 +2,9 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import backgroundImage from '../../../assets/images/s6pack.svg'; // use this to remove svg to jsxc errors: https://www.svgminify.com/
+import demoVideo from '../../../assets/video/s6packDemo.mp4';
 import { Table, TableBody, TableCell, TableRow, Typography } from '@mui/material';
+import ReactPlayer from 'react-player';
 
 const ProductHeroLayout = styled('section')(({ theme }) => ({
     color: theme.palette.common.white,
@@ -37,9 +39,16 @@ const Background = styled(Box)(({ theme }) => ({
     backgroundSize: 'cover',
     zIndex: -2,
     [theme.breakpoints.up('lg')]: {
+        minHeight: 700,
+        backgroundImage: 'url(' + backgroundImage + ')',
+        backgroundSize: '750px',
+        backgroundPosition: '0px 80px'
+    },
+    [theme.breakpoints.up('xl')]: {
         minHeight: 900,
         backgroundImage: 'url(' + backgroundImage + ')',
-        backgroundSize: '950px'
+        backgroundSize: '950px',
+        backgroundPosition: '0px 0px'
     }
 }));
 
@@ -175,6 +184,9 @@ function ProductHero() {
                 </Table>
             </ListBox>
             <Background />
+            <Box sx={{ display: 'none' }}>
+                <ReactPlayer loop muted playing playIcon={<button>Play</button>} url={demoVideo} />
+            </Box>
         </ProductHeroLayout>
     );
 }
