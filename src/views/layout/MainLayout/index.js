@@ -16,13 +16,14 @@ import Snackbar from '../../../views/landing/components/Snackbar';
 
 import { Auth } from 'aws-amplify';
 import { PLAN_MODIFIED, PLAN_CANCELED, ACCOUNT_DELETED } from '../../../graphql/subscriptions';
-import { addSnackBarMessage, clearSnackBarMessage } from '../../../store/reducers/snackBarMessages';
+import { addSnackBarMessage, clearSnackBarMessage, setSnackBarOpen } from '../../../store/reducers/snackBarMessages';
 import { gql, useApolloClient, useSubscription } from '@apollo/client';
 
 // types
 import { openDrawer } from '../../../store/reducers/menu';
 import { USER_ADDED, USER_DELETED } from '../../../graphql/subscriptions';
 import { SubscriptionEventBus } from '../../../utils/subscriptionEventBus';
+import { useAuthenticator } from '@aws-amplify/ui-react';
 
 // ==============================|| MAIN LAYOUT ||============================== //
 
@@ -34,14 +35,14 @@ const MainLayout = () => {
     const { drawerOpen } = useSelector((state) => state.menu);
     const client = useApolloClient();
     const navigate = useNavigate();
+    const { signOut } = useAuthenticator((context) => [context.route, context.signOut]);
 
-    const [snackBarOpen, setSnackBarOpen] = useState(false);
-
+    let snackBarOpen = useSelector((state) => state.snackBarMessages.snackBarOpen);
     let snackBarMessage = useSelector((state) => state.snackBarMessages.snackBarMessage);
     let snackBarMessageType = useSelector((state) => state.snackBarMessages.snackBarMessageType);
 
     const handleSnackBarClose = () => {
-        setSnackBarOpen(false);
+        store.dispatch(setSnackBarOpen(false));
         store.dispatch(clearSnackBarMessage());
     };
 
@@ -67,9 +68,9 @@ const MainLayout = () => {
     useEffect(() => {
         (async () => {
             if (snackBarMessage != '') {
-                setSnackBarOpen(true);
+                store.dispatch(setSnackBarOpen(true));
             } else {
-                setSnackBarOpen(false);
+                store.dispatch(setSnackBarOpen(false));
             }
             try {
                 const getTenantId = await Auth.currentSession().then((data) => data.idToken.payload.name);
@@ -162,7 +163,7 @@ const MainLayout = () => {
         onData: () => {
             triggerTokenRefresh();
             store.dispatch(addSnackBarMessage('Your subscription plan has updated. Changes are reflected immediately.'));
-            setSnackBarOpen(true);
+            store.dispatch(setSnackBarOpen(true));
         },
         onError: (error) => {
             console.log(tenantId);
@@ -173,10 +174,11 @@ const MainLayout = () => {
     useSubscription(gql(ACCOUNT_DELETED), {
         variables: { id: tenantId },
         onData: () => {
-            console.log('got here');
-            store.dispatch(addSnackBarMessage('Account has been deleted. You have been logged out.'));
-            setSnackBarOpen(true);
-            triggerTokenRefresh();
+            store.dispatch(
+                addSnackBarMessage('Account has been deleted, and any subscriptions Have Been Cancelled. You have been logged out.')
+            );
+            store.dispatch(setSnackBarOpen(true));
+            signOut();
             navigate('/login');
         },
         onError: (error) => {
@@ -188,9 +190,9 @@ const MainLayout = () => {
     useSubscription(gql(PLAN_CANCELED), {
         variables: { id: tenantId },
         onData: () => {
-            triggerTokenRefresh();
             store.dispatch(addSnackBarMessage('Your subscription has been canceled.'));
-            setSnackBarOpen(true);
+            store.dispatch(setSnackBarOpen(true));
+            triggerTokenRefresh();
             navigate('/login');
         },
         onError: (error) => {

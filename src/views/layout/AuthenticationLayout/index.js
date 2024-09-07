@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
 // material-ui
@@ -7,26 +8,39 @@ import { Box, ButtonBase, Grid, useTheme } from '@mui/material';
 // project import
 import Logo from '../../../view-components/Logo';
 import AuthFooter from '../../../view-components/cards/AuthFooter';
-import Snackbar from '../../../view-components/Snackbar';
+import Snackbar from '../../../views/landing/components/Snackbar';
 
 // assets
 import AuthBackground from '../../../assets/images/auth/AuthBackground';
 import { Link } from 'react-router-dom';
 import MainCard from '../../../view-components/MainCard';
+import { clearSnackBarMessage, setSnackBarOpen } from '../../../store/reducers/snackBarMessages';
+import { store } from '../../../store';
 
 // ==============================|| AUTHENTICATION - WRAPPER ||============================== //
 
 const AuthenticationLayout = ({ children }) => {
     const theme = useTheme();
-    const [snackBarOpen, setSnackBarOpen] = useState(false);
 
+    let snackBarOpen = useSelector((state) => state.snackBarMessages.snackBarOpen);
     let snackBarMessage = useSelector((state) => state.snackBarMessages.snackBarMessage);
     let snackBarMessageType = useSelector((state) => state.snackBarMessages.snackBarMessageType);
 
     const handleSnackBarClose = () => {
-        setSnackBarOpen(false);
+        store.dispatch(setSnackBarOpen(false));
         store.dispatch(clearSnackBarMessage());
     };
+
+    useEffect(() => {
+        (async () => {
+            console.log(snackBarMessage);
+            if (snackBarMessage != '') {
+                store.dispatch(setSnackBarOpen(true));
+            } else {
+                store.dispatch(setSnackBarOpen(false));
+            }
+        })();
+    }, [snackBarMessage]);
     return (
         <Box sx={{ minHeight: '100vh' }}>
             <AuthBackground />

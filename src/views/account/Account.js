@@ -21,9 +21,9 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { GET_TENANT } from '../../graphql/queries';
 import { ENABLE_DELETE_ACCOUNT, DISABLE_DELETE_ACCOUNT, DELETE_ACCOUNT } from '../../graphql/mutations';
-import SkeletonPlan from '../../views/layout/skeletons/Plan';
 import { gql, useMutation, useQuery } from '@apollo/client';
 import { useAuthenticator } from '@aws-amplify/ui-react';
+import SkeletonItem from '../layout/skeletons/Item';
 
 const Account = () => {
     const [open, setOpen] = React.useState(false);
@@ -38,7 +38,14 @@ const Account = () => {
             user?.signInUserSession?.idToken?.payload['cognito:groups'][0] == 'Owner' ||
             user?.signInUserSession?.idToken?.payload['cognito:groups'][0] == 'Free';
 
-        if (loading) return <SkeletonPlan />;
+        if (loading)
+            return (
+                <Grid container spacing={3} direction="row" justifyContent="center" alignItems="center">
+                    <Grid item xs={12} sm={6} md={4}>
+                        <SkeletonItem height={400} />
+                    </Grid>
+                </Grid>
+            );
 
         if (error) {
             return (

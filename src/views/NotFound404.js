@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AuthenticationLayout from './authentication/components/AuthenticationLayout';
+import AuthenticationLayout from './layout/AuthenticationLayout';
 
 export default function NotFound404() {
     return (

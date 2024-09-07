@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 // initial state
 const initialState = {
     snackBarMessage: '',
-    snackBarMessageType: 'success' // 'error'
+    snackBarMessageType: 'success', // 'error'
+    snackBarOpen: false
 };
 
 // ==============================|| SLICE - MENU ||============================== //
@@ -27,10 +28,14 @@ const snackBarMessagesSlice = createSlice({
         clearSnackBarMessage(state) {
             state.snackBarMessage = '';
             state.snackBarMessageType = 'success';
+        },
+
+        setSnackBarOpen(state, open) {
+            state.snackBarOpen = open.payload;
         }
     }
 });
 
 export default snackBarMessagesSlice.reducer;
 
-export const { addSnackBarMessage, clearSnackBarMessage, changeSnackBarType } = snackBarMessagesSlice.actions;
+export const { addSnackBarMessage, clearSnackBarMessage, changeSnackBarType, setSnackBarOpen } = snackBarMessagesSlice.actions;
