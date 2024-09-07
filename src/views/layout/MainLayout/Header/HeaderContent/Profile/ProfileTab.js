@@ -4,7 +4,7 @@ import React from 'react';
 import { useTheme } from '@mui/material/styles';
 import { useApolloClient } from '@apollo/client';
 import { List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-import { Receipt, Logout, Payment, ContactSupport } from '@mui/icons-material';
+import { Receipt, Logout, Payment, ContactSupport, PersonOutline } from '@mui/icons-material';
 
 // assets
 import { useNavigate } from 'react-router-dom';
@@ -15,9 +15,14 @@ import { useAuthenticator } from '@aws-amplify/ui-react';
 const ProfileTab = () => {
     const theme = useTheme();
     const client = useApolloClient();
+    const { user } = useAuthenticator((context) => [context.user]);
 
     const { signOut } = useAuthenticator((context) => [context.route, context.signOut]);
     const navigate = useNavigate();
+    const ownerPermissions =
+        user.signInUserSession.idToken.payload['cognito:groups'][0] == 'Owner' ||
+        user.signInUserSession.idToken.payload['cognito:groups'][0] == 'Free';
+    const adminPermissions = user.signInUserSession.idToken.payload['cognito:groups'][0] == 'Admin';
     function logout() {
         client.clearStore();
         signOut();
@@ -36,20 +41,34 @@ const ProfileTab = () => {
         navigate('/plans');
     }
 
+    function account() {
+        navigate('/account');
+    }
+
     return (
         <List component="nav" sx={{ p: 0, '& .MuiListItemIcon-root': { minWidth: 32, color: theme.palette.grey[500] } }}>
-            <ListItemButton onClick={plan}>
+            <ListItemButton onClick={account}>
                 <ListItemIcon>
-                    <Receipt />
+                    <PersonOutline />
                 </ListItemIcon>
-                <ListItemText primary="Plan" />
+                <ListItemText primary="Account" />
             </ListItemButton>
-            <ListItemButton onClick={billing}>
-                <ListItemIcon>
-                    <Payment />
-                </ListItemIcon>
-                <ListItemText primary="Billing" />
-            </ListItemButton>
+            {(ownerPermissions || adminPermissions) && (
+                <ListItemButton onClick={plan}>
+                    <ListItemIcon>
+                        <Receipt />
+                    </ListItemIcon>
+                    <ListItemText primary="Plan" />
+                </ListItemButton>
+            )}
+            {(ownerPermissions || adminPermissions) && (
+                <ListItemButton onClick={billing}>
+                    <ListItemIcon>
+                        <Payment />
+                    </ListItemIcon>
+                    <ListItemText primary="Billing" />
+                </ListItemButton>
+            )}
             <ListItemButton onClick={support}>
                 <ListItemIcon>
                     <ContactSupport />

@@ -197,3 +197,29 @@ export const DELETE_PAYMENT_METHOD = /* GraphQL */ `
         }
     }
 `;
+
+export const ENABLE_DELETE_ACCOUNT = /* GraphQL */ `
+    mutation enableDeleteAccount {
+        enableDeleteAccount {
+            id
+            deleteAccountFlag
+        }
+    }
+`;
+
+export const DISABLE_DELETE_ACCOUNT = /* GraphQL */ `
+    mutation disableDeleteAccount {
+        disableDeleteAccount {
+            id
+            deleteAccountFlag
+        }
+    }
+`;
+
+export const DELETE_ACCOUNT = /* GraphQL */ `
+    mutation deleteAccount {
+        deleteAccount {
+            id
+        }
+    }
+`;

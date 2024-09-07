@@ -19,6 +19,14 @@ export const PLAN_CANCELED = /* GraphQL */ `
     }
 `;
 
+export const ACCOUNT_DELETED = /* GraphQL */ `
+    subscription accountDeleted($id: String!) {
+        accountDeleted(id: $id) {
+            id
+        }
+    }
+`;
+
 export const PAYMENT_METHOD_ADDED = /* GraphQL */ `
     subscription paymentMethodAdded($tenantId: String!) {
         paymentMethodAdded(tenantId: $tenantId) {

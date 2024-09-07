@@ -21,6 +21,7 @@ export const GET_TENANT = /* GraphQL */ `
             trialPeriodDays
             trialPeriodTimestamp
             cancelPlanAt
+            deleteAccountFlag
             plan {
                 id
                 title

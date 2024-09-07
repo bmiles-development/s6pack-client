@@ -19,15 +19,10 @@ const ContactUs = Loadable(lazy(() => import('../views/contact/contactUs')));
 const Billing = Loadable(lazy(() => import('../views/billing/Billing')));
 const UserCreate = Loadable(lazy(() => import('../views/users/UserCreate')));
 const UserUpdate = Loadable(lazy(() => import('../views/users/UserUpdate')));
+const Account = Loadable(lazy(() => import('../views/account/Account')));
 
 // ==============================|| MAIN ROUTING ||============================== //
-/*
-Auth.currentAuthenticatedUser({
-    bypassCache: false // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
-})
-    .then((user) => console.log(user))
-    .catch((err) => console.log(err));
-*/
+
 const MainRoutes = {
     path: '/',
     element: (
@@ -51,6 +46,10 @@ const MainRoutes = {
                 {
                     path: '/support/',
                     element: <Support />
+                },
+                {
+                    path: '/account/',
+                    element: <Account />
                 },
                 {
                     path: '/billing/',

@@ -9,10 +9,8 @@ export function RequireAuth({ children }) {
     const navigate = useNavigate();
 
     const { user, route } = useAuthenticator((context) => [context.user]);
-
     useEffect(() => {
         if (route !== 'authenticated' && route !== 'idle') {
-            console.log(route);
             return navigate('/login');
         }
     }, [user, route, navigate, dispatch]);
