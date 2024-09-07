@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { store } from '../../../store';
 // material-ui
@@ -15,7 +15,7 @@ import Breadcrumbs from '../../../view-components/@extended/Breadcrumbs';
 import Snackbar from '../../../views/landing/components/Snackbar';
 
 import { Auth } from 'aws-amplify';
-import { PLAN_MODIFIED, PLAN_CANCELED } from '../../../graphql/subscriptions';
+import { PLAN_MODIFIED, PLAN_CANCELED, ACCOUNT_DELETED } from '../../../graphql/subscriptions';
 import { addSnackBarMessage, clearSnackBarMessage } from '../../../store/reducers/snackBarMessages';
 import { gql, useApolloClient, useSubscription } from '@apollo/client';
 
@@ -33,6 +33,7 @@ const MainLayout = () => {
     const [tenantId, setTenantId] = useState('');
     const { drawerOpen } = useSelector((state) => state.menu);
     const client = useApolloClient();
+    const navigate = useNavigate();
 
     const [snackBarOpen, setSnackBarOpen] = useState(false);
 
@@ -169,12 +170,28 @@ const MainLayout = () => {
         }
     });
 
+    useSubscription(gql(ACCOUNT_DELETED), {
+        variables: { id: tenantId },
+        onData: () => {
+            console.log('got here');
+            store.dispatch(addSnackBarMessage('Account has been deleted. You have been logged out.'));
+            setSnackBarOpen(true);
+            triggerTokenRefresh();
+            navigate('/login');
+        },
+        onError: (error) => {
+            console.log(tenantId);
+            console.warn(error);
+        }
+    });
+
     useSubscription(gql(PLAN_CANCELED), {
         variables: { id: tenantId },
         onData: () => {
             triggerTokenRefresh();
             store.dispatch(addSnackBarMessage('Your subscription has been canceled.'));
             setSnackBarOpen(true);
+            navigate('/login');
         },
         onError: (error) => {
             console.log(tenantId);

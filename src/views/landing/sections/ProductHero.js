@@ -37,9 +37,16 @@ const Background = styled(Box)(({ theme }) => ({
     backgroundSize: 'cover',
     zIndex: -2,
     [theme.breakpoints.up('lg')]: {
+        minHeight: 700,
+        backgroundImage: 'url(' + backgroundImage + ')',
+        backgroundSize: '750px',
+        backgroundPosition: '0px 80px'
+    },
+    [theme.breakpoints.up('xl')]: {
         minHeight: 900,
         backgroundImage: 'url(' + backgroundImage + ')',
-        backgroundSize: '950px'
+        backgroundSize: '850px',
+        backgroundPosition: '0px 60px'
     }
 }));
 
@@ -125,10 +132,10 @@ function ProductHero() {
             <Title sx={{ display: 'flex', py: 4, px: 2, justifyItems: 'center' }}>
                 <Box sx={{ display: 'block' }}>
                     <Typography sx={{ textAlign: 'center', pt: 2, pb: 1 }} variant="h1">
-                        Code Your SaaS App.&nbsp;{' '}
+                        Create Your Subscription-Based Web App.{' '}
                     </Typography>
                     <Typography sx={{ textAlign: 'center' }} variant="h3">
-                        Don&apos;t Code Boilerplate.{' '}
+                        Get Started by Downloading the Open Source Code for This Demo Site.{' '}
                     </Typography>
                 </Box>
             </Title>
