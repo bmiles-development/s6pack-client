@@ -7,6 +7,7 @@ import { Box, ButtonBase, Grid, useTheme } from '@mui/material';
 // project import
 import Logo from '../../../view-components/Logo';
 import AuthFooter from '../../../view-components/cards/AuthFooter';
+import Snackbar from '../../../view-components/Snackbar';
 
 // assets
 import AuthBackground from '../../../assets/images/auth/AuthBackground';
@@ -15,8 +16,17 @@ import MainCard from '../../../view-components/MainCard';
 
 // ==============================|| AUTHENTICATION - WRAPPER ||============================== //
 
-const AuthWrapper = ({ children }) => {
+const AuthenticationLayout = ({ children }) => {
     const theme = useTheme();
+    const [snackBarOpen, setSnackBarOpen] = useState(false);
+
+    let snackBarMessage = useSelector((state) => state.snackBarMessages.snackBarMessage);
+    let snackBarMessageType = useSelector((state) => state.snackBarMessages.snackBarMessageType);
+
+    const handleSnackBarClose = () => {
+        setSnackBarOpen(false);
+        store.dispatch(clearSnackBarMessage());
+    };
     return (
         <Box sx={{ minHeight: '100vh' }}>
             <AuthBackground />
@@ -67,12 +77,13 @@ const AuthWrapper = ({ children }) => {
                     <AuthFooter />
                 </Grid>
             </Grid>
+            <Snackbar open={snackBarOpen} closeFunc={handleSnackBarClose} message={snackBarMessage} alertColor={snackBarMessageType} />
         </Box>
     );
 };
 
-AuthWrapper.propTypes = {
+AuthenticationLayout.propTypes = {
     children: PropTypes.node
 };
 
-export default AuthWrapper;
+export default AuthenticationLayout;

@@ -1,11 +1,11 @@
 import React from 'react';
-import AuthWrapper from './components/AuthWrapper';
+import AuthenticationLayout from '../layout/AuthenticationLayout';
 import AmplifyAuthenticator from './components/AmplifyAuthenticator';
 
 const Register = () => (
-    <AuthWrapper>
+    <AuthenticationLayout>
         <AmplifyAuthenticator flowType="signUp" />
-    </AuthWrapper>
+    </AuthenticationLayout>
 );
 
 export default Register;
