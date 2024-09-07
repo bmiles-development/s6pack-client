@@ -175,7 +175,7 @@ const MainLayout = () => {
         variables: { id: tenantId },
         onData: () => {
             store.dispatch(
-                addSnackBarMessage('Account has been deleted, and any subscriptions Have Been Cancelled. You have been logged out.')
+                addSnackBarMessage('Account has been deleted. Any subscriptions purchased have been cancelled. You have been logged out.')
             );
             store.dispatch(setSnackBarOpen(true));
             signOut();
