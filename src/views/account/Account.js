@@ -22,14 +22,10 @@ import Typography from '@mui/material/Typography';
 import { GET_TENANT } from '../../graphql/queries';
 import { ENABLE_DELETE_ACCOUNT, DISABLE_DELETE_ACCOUNT, DELETE_ACCOUNT } from '../../graphql/mutations';
 import SkeletonPlan from '../../views/layout/skeletons/Plan';
-import { useNavigate } from 'react-router-dom';
 import { gql, useMutation, useQuery } from '@apollo/client';
-import { store } from '../../store';
 import { useAuthenticator } from '@aws-amplify/ui-react';
-import { addSnackBarMessage } from '../../store/reducers/snackBarMessages';
 
 const Account = () => {
-    let navigate = useNavigate();
     const [open, setOpen] = React.useState(false);
     const { user } = useAuthenticator((context) => [context.user]);
 
