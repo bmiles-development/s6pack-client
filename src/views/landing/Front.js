@@ -9,6 +9,7 @@ import AppAppBar from './sections/AppAppBar';
 import Snackbar from '../../views/landing/components/Snackbar';
 import DemoVideo from './sections/DemoVideo';
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { clearSnackBarMessage, setSnackBarOpen } from '../../store/reducers/snackBarMessages';
 import ProductSmokingHero from './sections/ProductSmokingHero';
 
