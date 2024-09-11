@@ -116,7 +116,7 @@ const CheckoutForm = (props) => {
                 fullWidth
                 disabled={!elements}
                 loading={paymentMethodLoading || paymentMethodLoading2 || clickLoading || skeletonLoading}
-                variant="contained"
+                variant={paymentMethodLoading || paymentMethodLoading2 || clickLoading || skeletonLoading ? 'outlined' : 'contained'}
             >
                 Submit
             </LoadingButton>

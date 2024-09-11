@@ -151,7 +151,7 @@
   18) running ```npm start``` will launch the local copy, but it uses the variables stored in the env file, so it is possible to switch between the dev, blue, and green stacks locally by commenting/uncommenting the block of variables (the live dev stack is the default)
 
 
-# DELVELOPER SETUP
+# DEVELOPER SETUP
 If you would like to contribute to s6pack by submitting pull requests, We've found it better to have a separate branch track a remote upstream git repo to push and pull changes from the s6pack repository, then the dev/blue/green branches push to your remote testing/live repos. 
 
 I've used the method outlined [here](https://dev.to/hashcode01/add-a-second-remote-origin-to-git-35a7). 

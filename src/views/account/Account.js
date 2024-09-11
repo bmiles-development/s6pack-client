@@ -32,8 +32,9 @@ const Account = () => {
     function AccountInfo() {
         const [enableDeleteAccount, { loading: buttonLoading1, error: error2 }] = useMutation(gql(ENABLE_DELETE_ACCOUNT));
         const [disableDeleteAccount, { loading: buttonLoading2, error: error3 }] = useMutation(gql(DISABLE_DELETE_ACCOUNT));
-        const [deleteAccount, { loading: deleteButtonLoading, error: error4 }] = useMutation(gql(DELETE_ACCOUNT));
+        const [deleteAccount, { loading: deleteButtonLoading, error: error4, data: deleteAccountData }] = useMutation(gql(DELETE_ACCOUNT));
         const { loading, error, data } = useQuery(gql(GET_TENANT));
+
         const ownerPermissions =
             user?.signInUserSession?.idToken?.payload['cognito:groups'][0] == 'Owner' ||
             user?.signInUserSession?.idToken?.payload['cognito:groups'][0] == 'Free';
@@ -77,13 +78,21 @@ const Account = () => {
             );
         }
 
-        const handleDeleteAccount = (event) => {
+        if (deleteAccountData) {
+            setOpen(false);
+        }
+
+        const handleDeleteAccountToggle = (event) => {
             console.log(event.target.value);
             if (event.target.value == 'Off') {
                 enableDeleteAccount();
             } else {
                 disableDeleteAccount();
             }
+        };
+
+        const handleDeleteAccount = () => {
+            deleteAccount();
         };
 
         const handleClickOpen = () => {
@@ -131,7 +140,7 @@ const Account = () => {
                                                 id="group"
                                                 value={data.getTenant.deleteAccountFlag == true ? 'Off' : 'On'}
                                                 disabled={buttonLoading1 || buttonLoading2}
-                                                onChange={handleDeleteAccount}
+                                                onChange={handleDeleteAccountToggle}
                                             >
                                                 <MenuItem value={'On'}>On</MenuItem>
                                                 <MenuItem value={'Off'}>Off</MenuItem>
@@ -174,11 +183,15 @@ const Account = () => {
                                             </DialogContentText>
                                         </DialogContent>
                                         <DialogActions>
-                                            <LoadingButton onClick={deleteAccount} loading={deleteButtonLoading} color="error">
-                                                I Understand, Delete It All
-                                            </LoadingButton>
-                                            <LoadingButton onClick={handleClose} loading={deleteButtonLoading}>
+                                            <Button
+                                                sx={{ display: deleteButtonLoading ? 'none' : 'inline-block' }}
+                                                loading={deleteButtonLoading}
+                                                onClick={handleClose}
+                                            >
                                                 No, Do Not Delete!
+                                            </Button>
+                                            <LoadingButton onClick={handleDeleteAccount} loading={deleteButtonLoading} color="error">
+                                                I Understand, Delete It All
                                             </LoadingButton>
                                         </DialogActions>
                                     </Dialog>

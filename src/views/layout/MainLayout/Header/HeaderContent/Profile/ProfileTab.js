@@ -24,7 +24,10 @@ const ProfileTab = () => {
         user.signInUserSession.idToken.payload['cognito:groups'][0] == 'Free';
     const adminPermissions = user.signInUserSession.idToken.payload['cognito:groups'][0] == 'Admin';
     function logout() {
+        client.cache.reset();
         client.clearStore();
+        localStorage.clear();
+        sessionStorage.clear();
         signOut();
         navigate('/login');
     }

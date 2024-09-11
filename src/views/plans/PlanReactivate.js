@@ -128,7 +128,7 @@ const PlanCancel = () => {
                                     <LoadingButton
                                         loading={loading || loading2}
                                         to={'/users'}
-                                        variant="contained"
+                                        variant={loading || loading2 ? 'outlined' : 'contained'}
                                         color="secondary"
                                         style={{ marginTop: theme.spacing(3) }}
                                     >
@@ -138,7 +138,7 @@ const PlanCancel = () => {
                                         type="submit"
                                         loading={loading || loading2}
                                         color="primary"
-                                        variant="contained"
+                                        variant={loading || loading2 ? 'outlined' : 'contained'}
                                         style={{ marginTop: theme.spacing(3) }}
                                         onClick={(e) => {
                                             e.preventDefault();

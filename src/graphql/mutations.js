@@ -121,6 +121,7 @@ export const REACTIVATE_CANCELING_PAID_PLAN = /* GraphQL */ `
     mutation reactivateCancelingPaidPlan {
         reactivateCancelingPaidPlan {
             id
+            cancelPlanAt
         }
     }
 `;
