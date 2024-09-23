@@ -12,6 +12,7 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { clearSnackBarMessage, setSnackBarOpen } from '../../store/reducers/snackBarMessages';
 import ProductSmokingHero from './sections/ProductSmokingHero';
+import { Typography } from '@mui/material';
 
 function Front() {
     let snackBarOpen = useSelector((state) => state.snackBarMessages.snackBarOpen);
@@ -34,6 +35,12 @@ function Front() {
             <ProductHero />
             <div style={{ backgroundColor: '#efefef' }}>
                 <DemoVideo />
+                <div style={{ backgroundColor: '#fff', padding: '1rem', textAlign: 'center' }}>
+                    <Typography component="h5" variant="h5" color="text.primary">
+                        {' '}
+                        Read the full documentation <a href="https://docs.s6pack.build/getting-started/welcome/">here</a>.
+                    </Typography>
+                </div>
             </div>
             <ProductValues />
             <ProductFeatures />
