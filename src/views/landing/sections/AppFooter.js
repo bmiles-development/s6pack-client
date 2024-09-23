@@ -47,6 +47,16 @@ export default function AppFooter() {
                             <Box component="li" sx={{ py: 0.5 }}>
                                 <Link href="/terms.md">Terms of Use</Link>
                             </Box>
+                        </Box>
+                    </Grid>
+                    <Grid item>
+                        <Typography variant="h6" marked="left" gutterBottom>
+                            Support
+                        </Typography>
+                        <Box component="ul" sx={{ m: 0, listStyle: 'none', p: 0 }}>
+                            <Box component="li" sx={{ py: 0.5 }}>
+                                <Link href="https://docs.s6pack.build/getting-started/welcome/">Documentation</Link>
+                            </Box>
                             <Box component="li" sx={{ py: 0.5 }}>
                                 <Link href="#contact">Contact</Link>
                             </Box>
