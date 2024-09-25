@@ -38,7 +38,11 @@ function Front() {
                 <div style={{ backgroundColor: '#fff', padding: '1rem', textAlign: 'center' }}>
                     <Typography component="h5" variant="h5" color="text.primary">
                         {' '}
-                        Read the full documentation <a href="https://docs.s6pack.build/getting-started/welcome/">here</a>.
+                        Sign-in to test the demo admin dashboard. Use test crdit card: 4242424242424242
+                        <br></br>to check out the example payment plans and their features.
+                        <br />
+                        <br />
+                        Read the full documentation <a href="https://docs.s6pack.build/getting-started/welcome/">here</a>.<br />
                     </Typography>
                 </div>
             </div>
