@@ -17,15 +17,15 @@ const FirebaseSocial = () => {
     const matchDownSM = useMediaQuery(theme.breakpoints.down('sm'));
 
     const githubHandler = async () => {
-        return navigate('https://github.com/bmiles-development/s6pack-client');
+        return (window.location.href = 'https://github.com/bmiles-development/s6pack-client');
     };
 
     const twitterHandler = async () => {
-        return navigate('https://x.com/s6pack_build'); // login || singup
+        return (window.location.href = 'https://x.com/s6pack_build');
     };
 
     const discordHandler = async () => {
-        return navigate('https://discord.gg/84bWSVbq');
+        return (window.location.href = 'https://discord.gg/84bWSVbq');
     };
 
     return (
