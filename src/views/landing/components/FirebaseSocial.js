@@ -25,7 +25,7 @@ const FirebaseSocial = () => {
     };
 
     const discordHandler = async () => {
-        return (window.location.href = 'https://discord.gg/84bWSVbq');
+        return (window.location.href = 'https://discord.com/channels/1268951732797571125/1268951734651457541');
     };
 
     return (
