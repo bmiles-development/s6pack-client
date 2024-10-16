@@ -6,31 +6,42 @@ import { Typography } from '@mui/material';
 
 const DemoVideoLayout = styled('section')(({ theme }) => ({
     position: 'relative',
-    display: 'flex',
-    flexDirection: 'row',
     alignItems: 'center',
     padding: '5px',
-    flexWrap: 'wrap',
+    borderRadius: '0px',
+    margin: '0px 30px 30px 30px',
+    overflow: 'hidden',
     [theme.breakpoints.up('lg')]: {
         height: '720px',
-        top: '-120px',
-        padding: '0px'
+        top: '-60px',
+        padding: '0px',
+        width: '1280px',
+        borderRadius: '20px'
     }
 }));
 
 function DemoVideo() {
     return (
         <div style={{ textAlign: 'center' }}>
-            <DemoVideoLayout width={'100%'} style={{ padding: '30px' }}>
-                <ReactPlayer width={'100%'} height={'100%'} loop muted playing playIcon={<button>Play</button>} url={demoVideo} />
-                <div style={{ width: '100%', paddingTop: '50px' }}>
-                    <Typography component="h3" variant="h3" color="text.primary">
-                        <a href="https://github.com/bmiles-development/s6pack-cloud">Download</a> This Project &#8679;
-                        <br />
-                        <br />
-                    </Typography>
-                </div>
+            <DemoVideoLayout>
+                <ReactPlayer
+                    width={'100%'}
+                    height={'100%'}
+                    style={{ borderRadius: '20px' }}
+                    loop
+                    muted
+                    playing
+                    playIcon={<button>Play</button>}
+                    url={demoVideo}
+                />
             </DemoVideoLayout>
+            <div style={{ width: '100%', position: 'relative', top: '-30px' }}>
+                <Typography component="h3" variant="h3" color="text.primary">
+                    <a href="https://github.com/bmiles-development/s6pack-cloud">Download</a> This Project &#8679;
+                    <br />
+                    <br />
+                </Typography>
+            </div>
         </div>
     );
 }

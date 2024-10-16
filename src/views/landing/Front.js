@@ -34,7 +34,10 @@ function Front() {
             <AppAppBar />
             <ProductHero />
             <div style={{ backgroundColor: '#efefef' }}>
-                <DemoVideo />
+                <div style={{ display: 'flex', width: '100%', justifyContent: 'center' }}>
+                    <DemoVideo />
+                </div>
+
                 <div style={{ backgroundColor: '#fff', padding: '1rem', textAlign: 'center' }}>
                     <Typography component="h3" variant="h3" color="text.primary">
                         {' '}
