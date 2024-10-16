@@ -10,9 +10,10 @@ const DemoVideoLayout = styled('section')(({ theme }) => ({
     flexDirection: 'row',
     alignItems: 'center',
     padding: '5px',
+    flexWrap: 'wrap',
     [theme.breakpoints.up('lg')]: {
         height: '720px',
-        top: '-90px',
+        top: '-120px',
         padding: '0px'
     }
 }));
@@ -20,15 +21,16 @@ const DemoVideoLayout = styled('section')(({ theme }) => ({
 function DemoVideo() {
     return (
         <div style={{ textAlign: 'center' }}>
-            <DemoVideoLayout width={'100%'}>
+            <DemoVideoLayout width={'100%'} style={{ padding: '30px' }}>
                 <ReactPlayer width={'100%'} height={'100%'} loop muted playing playIcon={<button>Play</button>} url={demoVideo} />
+                <div style={{ width: '100%', paddingTop: '50px' }}>
+                    <Typography component="h3" variant="h3" color="text.primary">
+                        <a href="https://github.com/bmiles-development/s6pack-cloud">Download</a> This Project &#8679;
+                        <br />
+                        <br />
+                    </Typography>
+                </div>
             </DemoVideoLayout>
-
-            <Typography component="h3" variant="h3" color="text.primary">
-                <a href="https://github.com/bmiles-development/s6pack-cloud">Download</a> This Project &#8679;
-                <br />
-                <br />
-            </Typography>
         </div>
     );
 }
