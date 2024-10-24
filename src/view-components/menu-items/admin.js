@@ -17,7 +17,7 @@ const admin = {
             id: 'documentation',
             title: 'Documentation',
             type: 'item',
-            url: 'https://codedthemes.gitbook.io/mantis-react/',
+            url: 'https://docs.s6pack.build/getting-started/welcome/',
             icon: QuestionMark,
             external: true,
             target: true
