@@ -17,11 +17,11 @@ const FirebaseSocial = () => {
     const matchDownSM = useMediaQuery(theme.breakpoints.down('sm'));
 
     const githubHandler = async () => {
-        return (window.location.href = 'https://github.com/bmiles-development/s6pack-client');
+        return (window.location.href = 'https://github.com/bmiles-development/stations-client');
     };
 
     const twitterHandler = async () => {
-        return (window.location.href = 'https://x.com/s6pack_build');
+        return (window.location.href = 'https://x.com/stations_build');
     };
 
     const discordHandler = async () => {

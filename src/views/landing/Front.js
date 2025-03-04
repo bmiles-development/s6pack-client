@@ -41,7 +41,7 @@ function Front() {
                 <div style={{ backgroundColor: '#fff', padding: '1rem', textAlign: 'center' }}>
                     <Typography component="h3" variant="h3" color="text.primary">
                         {' '}
-                        <a href="http://s6pack.build/register/">Test</a> the live demo.
+                        <a href="http://stations.build/register/">Test</a> the live demo.
                     </Typography>
                     <Typography component="h5" variant="h5" color="text.primary">
                         Use test crdit card: 4242424242424242
@@ -50,7 +50,7 @@ function Front() {
                         <br />
                     </Typography>
                     <Typography component="h3" variant="h3" color="text.primary">
-                        Read the <a href="https://docs.s6pack.build/getting-started/welcome/">Docs</a>.
+                        Read the <a href="https://docs.stations.build/getting-started/welcome/">Docs</a>.
                         <br />
                         <br />
                     </Typography>

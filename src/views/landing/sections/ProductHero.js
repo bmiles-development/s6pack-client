@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import backgroundImage from '../../../assets/images/s6pack.svg'; // use this to remove svg to jsxc errors: https://www.svgminify.com/
+import backgroundImage from '../../../assets/images/stations.svg'; // use this to remove svg to jsxc errors: https://www.svgminify.com/
 import { Table, TableBody, TableCell, TableRow, Typography } from '@mui/material';
 
 const ProductHeroLayout = styled('section')(({ theme }) => ({
@@ -51,7 +51,7 @@ const Background = styled(Box)(({ theme }) => ({
 }));
 
 const BoxImage = styled(Box)(({}) => ({
-    alt: 's6pack',
+    alt: 'stations',
     width: '100%'
 }));
 

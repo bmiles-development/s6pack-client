@@ -37,7 +37,7 @@ function AppAppBar() {
                         href="/"
                         sx={{ fontSize: { xs: '2rem', md: '3rem' } }}
                     >
-                        {'s6pack'}
+                        {'stations'}
                     </Link>
                     {authStatus !== 'authenticated' ? (
                         <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>

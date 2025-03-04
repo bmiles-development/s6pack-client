@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
-import backgroundImage from '../s6pack.svg';
+import backgroundImage from '../stations.svg';
 
 // ==============================|| AUTH BLUR BACK SVG ||============================== //
 

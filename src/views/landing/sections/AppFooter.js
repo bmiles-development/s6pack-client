@@ -11,7 +11,7 @@ function Copyright() {
     return (
         <React.Fragment>
             {'© '}
-            s6pack&nbsp;
+            stations&nbsp;
             {new Date().getFullYear()}
         </React.Fragment>
     );
@@ -55,7 +55,7 @@ export default function AppFooter() {
                         </Typography>
                         <Box component="ul" sx={{ m: 0, listStyle: 'none', p: 0 }}>
                             <Box component="li" sx={{ py: 0.5 }}>
-                                <Link href="https://docs.s6pack.build/getting-started/welcome/">Documentation</Link>
+                                <Link href="https://docs.stations.build/getting-started/welcome/">Documentation</Link>
                             </Box>
                             <Box component="li" sx={{ py: 0.5 }}>
                                 <Link href="#contact">Contact</Link>

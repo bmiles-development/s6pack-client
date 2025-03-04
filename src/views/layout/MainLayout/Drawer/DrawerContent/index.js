@@ -19,8 +19,8 @@ const DrawerContent = () => (
         <Navigation />
         <Typography variant="body2" color="text.secondary" align="center">
             {'Copyright © '}
-            <Link color="inherit" href="https://s6pack.com/">
-                s6pack
+            <Link color="inherit" href="https://stations.com/">
+                stations
             </Link>{' '}
             {new Date().getFullYear()}
         </Typography>

@@ -17,7 +17,7 @@ const admin = {
             id: 'documentation',
             title: 'Documentation',
             type: 'item',
-            url: 'https://docs.s6pack.build/getting-started/welcome/',
+            url: 'https://docs.stations.build/getting-started/welcome/',
             icon: QuestionMark,
             external: true,
             target: true

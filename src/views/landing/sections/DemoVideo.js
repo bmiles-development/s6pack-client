@@ -1,5 +1,5 @@
 import React from 'react';
-import demoVideo from '../../../assets/video/s6packDemo.mp4';
+import demoVideo from '../../../assets/video/stationsDemo.mp4';
 import { styled } from '@mui/material/styles';
 import ReactPlayer from 'react-player';
 import { Typography } from '@mui/material';
@@ -37,7 +37,7 @@ function DemoVideo() {
             </DemoVideoLayout>
             <div style={{ width: '100%', position: 'relative', top: '-30px' }}>
                 <Typography component="h3" variant="h3" color="text.primary">
-                    <a href="https://github.com/bmiles-development/s6pack-cloud">Download</a> This Project &#8679;
+                    <a href="https://github.com/bmiles-development/stations-cloud">Download</a> This Project &#8679;
                     <br />
                     <br />
                 </Typography>
